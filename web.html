@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vishwanath - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <style>
+    :root {
+      --primary-color: #fca311;
+      --text-light: #ffffff;
+      --bg-dark: #141e30;
+      --bg-secondary: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(-45deg, #141e30, #243b55, #1f4068, #16213e);
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 1rem;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: var(--primary-color);
+      margin: 0 1.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    header h1 {
+      font-size: 4rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      color: #dddddd;
+    }
+
+    .resume a {
+      padding: 0.75rem 1.5rem;
+      background: var(--primary-color);
+      color: #000;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .resume a:hover {
+      background: #fff;
+      color: #141e30;
+    }
+
+    section {
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+    }
+
+    .project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem; /* Space between the project cards */
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 2rem;  /* Adds space above the project cards */
+}
+
+
+    .project {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: left;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  margin-bottom: 2rem;  /* Adds space between the project cards */
+}
+
+.project:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(255, 255, 255, 0.2);
+}
+
+
+    .project h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-light);
+    }
+
+    .project p {
+      font-size: 1rem;
+      color: #dddddd;
+    }
+
+    .skills-category {
+      margin-bottom: 3rem;
+      max-width: 1000px;
+      margin-inline: auto;
+    }
+
+    .skills-category h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.5rem;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .skill-item {
+      background: var(--bg-secondary);
+      padding: 1rem;
+      border-radius: 1rem;
+      min-width: 140px;
+      flex: 1 1 180px;
+      text-align: center;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .skill-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+    }
+
+    .skills-icon {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .contact-icons a {
+      font-size: 2rem;
+      margin: 0 1rem;
+      color: var(--primary-color);
+      transition: 0.3s;
+    }
+
+    .contact-icons a:hover {
+      color: #ffffff;
+      transform: scale(1.2);
+    }
+
+    .section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    a[href^="mailto"] {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    .contact-section {
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 2px solid #fca31133;
+  padding: 5rem 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(252, 163, 17, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.contact-item i {
+  background: #fca311;
+  color: #141e30;
+  padding: 0.5rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-item a {
+  color: #fca311;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 6px #fca311;
+}
+
+.project-links {
+  margin-top: 1rem;
+}
+
+.project-links a {
+  font-size: 1.1rem;
+  color: #fca311;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.project-links a:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.project-links a i {
+  font-size: 1.3rem;
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>Vishwanath Biradar</h1>
+    <p>Self Employed | Innovator | Learner</p>
+    <div class="resume">
+      <a href="resume.pdf" target="_blank"><i class="fas fa-file-alt"></i> View Resume</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m a passionate engineering student who loves building creative, impactful solutions with technology. My goal is to solve real-world problems through AI and development.</p>
+  </section>
+
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+  
+    <div class="project">
+      <h3>Smart Home System</h3>
+      <p>Built a voice-controlled automation system using Arduino and Flask. Enables real-time control of lights and appliances via speech commands.</p>
+      <div class="project-links">
+        <a href="https://github.com/your-username/smart-home-system" target="_blank">
+          <i class="fab fa-github"></i> View Repo
+        </a>
+      </div>
+    </div>
+  
+    <div class="project">
+      <h3>ChatGPT for PDFs/Docs</h3>
+      <p>Developed a custom AI chatbot to interact with PDFs/Docs using LangChain, LLaMA 3, FAISS, and Streamlit. Enables contextual document Q&A.</p>
+      <div class="project-links">
+        <a href="https://github.com/your-username/chatgpt-pdf-docs" target="_blank">
+          <i class="fab fa-github"></i> View Repo
+        </a>
+      </div>
+    </div>
+  
+    <div class="project">
+      <h3>Real-time Object Detection and Tracking</h3>
+      <p>Implemented YOLOv8 with an enhanced DeepSORT algorithm for detecting and tracking objects in surveillance, traffic, and sports video streams.</p>
+      <div class="project-links">
+        <a href="https://github.com/your-username/object-detection-tracking" target="_blank">
+          <i class="fab fa-github"></i> View Repo
+        </a>
+      </div>
+    </div>
+  
+    <div class="project">
+      <h3>AI Story Generator Game</h3>
+      <p>Created an interactive branching game using local LLMs (LLaMA 3/Mistral), Three.js for visuals, and a dynamic storyline engine powered by prompts.</p>
+      <div class="project-links">
+        <a href="https://github.com/your-username/ai-story-generator-game" target="_blank">
+          <i class="fab fa-github"></i> View Repo
+        </a>
+      </div>
+    </div>
+  
+    <div class="project">
+      <h3>Document Image Enhancer</h3>
+      <p>Integrated a pretrained model in an Android app for real-time document enhancement using TensorFlow Lite, enhancing OCR accuracy from camera input.</p>
+      <div class="project-links">
+        <a href="https://github.com/your-username/document-image-enhancer" target="_blank">
+          <i class="fab fa-github"></i> View Repo
+        </a>
+      </div>
+    </div>
+  
+  </section>
+  
+
+  <section id="skills">
+    <h2>Skills</h2>
+
+    <div class="skills-category">
+      <h3>Languages</h3>
+      <div class="skills-grid">
+        <div class="skill-item"><i class="fas fa-code skills-icon"></i> Python</div>
+        <div class="skill-item"><i class="fab fa-js-square skills-icon"></i> JavaScript</div>
+        <div class="skill-item"><i class="fab fa-java skills-icon"></i> Java</div>
+        <div class="skill-item"><i class="fab fa-html5 skills-icon"></i> HTML</div>
+        <div class="skill-item"><i class="fab fa-css3-alt skills-icon"></i> CSS</div>
+        <div class="skill-item"><i class="fab fa-cuttlefish skills-icon"></i> C/C++</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>Libraries</h3>
+      <div class="skills-grid">
+        <div class="skill-item">NumPy</div>
+        <div class="skill-item">Pandas</div>
+        <div class="skill-item">Matplotlib</div>
+        <div class="skill-item">OpenCV</div>
+        <div class="skill-item">Requests</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>Frameworks</h3>
+      <div class="skills-grid">
+        <div class="skill-item">Flask</div>
+        <div class="skill-item">Django</div>
+        <div class="skill-item">FastAPI</div>
+        <div class="skill-item">TensorFlow</div>
+        <div class="skill-item">PyTorch</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact-section">
+    <h2>Contact</h2>
+    <div class="contact-card">
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:Vishwanathsbiradar1@gmail.com">Vishwanathsbiradar1@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <span>+91 9449028959</span>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/vishwanath-biradar-582b502a9/" target="_blank">linkedin.com/in/vishwa090</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github"></i>
+          <a href="https://github.com/vishwanath090" target="_blank">github.com/vishwanath090</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+</body>
+</html>
